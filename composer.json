@@ -1,5 +1,5 @@
 {
-    "name": "PH7/CookieSession",
+    "name": "pH-7/CookieSession",
     "description": "Very light library to manage easily and simply the Session and Cookie with PHP 7+",
     "keywords": ["session","cookie","PHP 7","secure session","secure cookie","secure","cookie session"],
     "type": "library",
