@@ -19,7 +19,7 @@
     },
     "autoload": {
         "psr-4": {
-            "PH7\\CookieSession\\": ""
+            "PH7\\CookieSession\\": "src/"
         }
     }
 }
