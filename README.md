@@ -1,6 +1,6 @@
 # CookieSession
 
-**CookieSession** is a very light library to manage easily and simply the Session and Cookie with PHP 7+.
+**CookieSession** is a very light library to manage easily and simply the Session and Cookie with PHP 7+ (and without spending time by configuring and securing them).
 
 
 ## Installation
