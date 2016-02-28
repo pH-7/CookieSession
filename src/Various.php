@@ -5,7 +5,7 @@
  *
  * @author           Pierre-Henry Soria <ph7software@gmail.com>
  * @copyright        (c) 2012-2016, Pierre-Henry Soria. All Rights Reserved.
- * @license          GNU General Public License; See PH7.LICENSE.txt and PH7.COPYRIGHT.txt in the root directory.
+ * @license          GNU General Public License 3 or later <http://www.gnu.org/licenses/gpl.html>
  * @package          PH7  / CookieSession
  */
 
