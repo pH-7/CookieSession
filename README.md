@@ -37,7 +37,7 @@ $oSession->set($aData);
 echo $oSession->get('lang_pref'); // Will display 'English'
 echo $oSession->get('another_session'); // Will display 'Another value'
 
-echo $oSession->get('my_name'); // Will display 'Pierre-Henry'
+echo ($oSession->exists('my_name')) ? $oSession->get('my_name') : 'Well, well, we dont have a name in the session'; // Will display 'Pierre-Henry'
 ```
 
 
@@ -58,6 +58,10 @@ $aCookies = [
     'job' => 'Software Engineer'
 ];
 $oCookie->set($aCookies);
+
+if ($oCookie->exists($aCookies)) {
+	echo 'All the following cookies exist: ' . implode(', ', $aCookies);
+}
 
 echo $oCookie->get('name'); // Will display 'Pierre-Henry'
 echo $oCookie->get('mycookie'); // Will display 'Amazing Value!'
