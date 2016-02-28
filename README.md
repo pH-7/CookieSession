@@ -76,7 +76,7 @@ I'm **Pierre-Henry Soria**, **Software Developer** passionate about a lot of thi
 
 ## Contact
 
-You can send an email at **pierrehenry [AT] gmail {D0T} COM** or at **phy {AT} hizup [D0T] UK**
+You can send an email at **pierrehenrysoria [AT] gmail {D0T} COM** or at **phy {AT} hizup [D0T] UK**
 
 
 ## License
