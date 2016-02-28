@@ -17,7 +17,7 @@ $ composer require ucsdmath/session
 
 ```PHP
 <?php
-use PH7\CookieSession\Session;
+use PH7\CookieSession\Session\Session;
 
 $oSession = new Session;
 
@@ -34,10 +34,10 @@ $oSession->set($aData);
 
 
 // Get session
-$oSession->get('lang_pref'); // Will display 'English'
-$oSession->get('another_session'); // Will display 'Another value'
+echo $oSession->get('lang_pref'); // Will display 'English'
+echo $oSession->get('another_session'); // Will display 'Another value'
 
-$oSession->get('my_name'); // Will display 'Pierre-Henry'
+echo $oSession->get('my_name'); // Will display 'Pierre-Henry'
 ```
 
 
@@ -45,22 +45,22 @@ $oSession->get('my_name'); // Will display 'Pierre-Henry'
 
 ```PHP
 <?php
-use PH7\CookieSession\Cookie;
+use PH7\CookieSession\Cookie\Cookie;
 
 $oCookie = new Cookie;
 
 $oCookie->set('mycookie', 'Amazing Value!');
 
 // Create some cookies in array
-$aCookies [
+$aCookies = [
     'name' => 'Pierre-Henry',
     'city' => 'Manchester',
     'job' => 'Software Engineer'
 ];
 $oCookie->set($aCookies);
 
-$oCookie->get('name'); // Will display 'Pierre-Henry'
-$oCookie->get('mycookie'); // Will display 'Amazing Value!'
+echo $oCookie->get('name'); // Will display 'Pierre-Henry'
+echo $oCookie->get('mycookie'); // Will display 'Amazing Value!'
 ```
 
 

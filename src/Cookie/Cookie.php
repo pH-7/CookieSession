@@ -11,6 +11,8 @@
 
 namespace PH7\CookieSession\Cookie;
 
+use PH7\CookieSession\Various;
+
 class Cookie extends Config
 {
     /**
@@ -25,7 +27,7 @@ class Cookie extends Config
     public function set($mName, $sValue = null, $iTime = null, $bSecure = null)
     {
         $iTime = time() + ((int) !empty($iTime) ? $iTime : $this->getExpiration());
-        $bSecure = (!empty($bSecure) && is_bool($bSecure)) ? $bSecure : (substr(PH7_URL_PROT, 0, 5) === 'https') ? true : false;
+        $bSecure = (!empty($bSecure) && is_bool($bSecure)) ? $bSecure : $this->getIsSsl();
 
         if (is_array($mName)) {
             foreach ($mName as $sN => $sV) {
@@ -35,10 +37,10 @@ class Cookie extends Config
             $sCookieName = $this->getPrefix() . $mName;
 
             /* Check if we are not in localhost mode, otherwise may not work. */
-            if (!\PH7\CookieSession\Various::isLocalHost()) {
+            if (!Various::isLocalHost()) {
                 setcookie($sCookieName, $sValue, $iTime, $this->getPath(), $this->getDomain(), $bSecure, true);
             } else {
-                setcookie($sCookieName, $sValue, $iTime, PH7_SH);
+                setcookie($sCookieName, $sValue, $iTime, '/');
             }
         }
     }
@@ -53,7 +55,7 @@ class Cookie extends Config
     public function get($sName, $bEscape = true)
     {
         $sCookieName = $this->getPrefix() . $sName;
-        return (!empty($_COOKIE[$sCookieName]) ? ($bEscape ? escape($_COOKIE[$sCookieName]) : $_COOKIE[$sCookieName]) : '');
+        return (!empty($_COOKIE[$sCookieName]) ? ($bEscape ? Various::escape($_COOKIE[$sCookieName]) : $_COOKIE[$sCookieName]) : '');
     }
 
     /**

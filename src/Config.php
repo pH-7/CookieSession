@@ -16,6 +16,7 @@ abstract class Config implements IConfig
     private $sPrefix = 'pH7Cookie_';
     private $sPath = '/';
     private $sDomain;
+    private $bIsSsl;
 
 
     public function getExpiration()
@@ -37,11 +38,19 @@ abstract class Config implements IConfig
     {
         if (empty($this->sDomain)) {
             $sDomain = (($_SERVER['SERVER_PORT'] != '80') && ($_SERVER['SERVER_PORT'] != '443')) ?  $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] : $_SERVER['SERVER_NAME'];
-            return '.' . str_replace('www.', '', $sDomain);
-        } else {
-            $this->sDomain;
+            $this->sDomain = '.' . str_replace('www.', '', $sDomain);
         }
+        return $this->sDomain;
     }
+
+    public function getIsSsl()
+    {
+        if (empty($this->bIsSsl)) {
+            $this->bIsSsl = (!empty($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS'] == 'on'));
+        }
+        return $this->bIsSsl;
+    }
+
 
     /**
      * @param int $iExpiration In seconds.
@@ -73,5 +82,13 @@ abstract class Config implements IConfig
     public function setDomain(string $sDomain)
     {
         $this->sDomain = $sDomain;
+    }
+
+    /**
+     * @param bool $bIsSsl
+     */
+    public function setIsSsl(bool $bIsSsl)
+    {
+        $this->bIsSsl = $bIsSsl;
     }
 }

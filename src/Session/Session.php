@@ -11,6 +11,8 @@
 
 namespace PH7\CookieSession\Session;
 
+use PH7\CookieSession\Various;
+
 class Session extends Config
 {
 
@@ -27,15 +29,13 @@ class Session extends Config
 
         session_name($this->getCookieName());
 
-        $bSecure = (substr(PH7_URL_PROT, 0, 5) === 'https') ? true : false;
-
         /**
          * In localhost mode, security session_set_cookie_params causing problems in the sessions, so we disable this if we are in localhost mode.
          * Otherwise if we are in production mode, we activate this.
          */
-        if (!\PH7\CookieSession\Various::isLocalHost()) {
+        if (!Various::isLocalHost()) {
             $iTime = (int) $this->getExpiration();
-            session_set_cookie_params($iTime, $this->getPath(), $this->getDomain(), $bSecure, true);
+            session_set_cookie_params($iTime, $this->getPath(), $this->getDomain(), $this->getIsSsl(), true);
         }
 
         // Session initialization
@@ -72,7 +72,7 @@ class Session extends Config
     public function get($sName, $bEscape = true)
     {
         $sSessionName = $this->getPrefix() . $sName;
-        return (!empty($_SESSION[$sSessionName]) ? ($bEscape ? escape($_SESSION[$sSessionName]) : $_SESSION[$sSessionName]) : '');
+        return (!empty($_SESSION[$sSessionName]) ? ($bEscape ? Various::escape($_SESSION[$sSessionName]) : $_SESSION[$sSessionName]) : '');
     }
 
     /**

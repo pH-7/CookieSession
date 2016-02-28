@@ -27,4 +27,16 @@ class Various
         return ($sServerName === 'localhost' || $sServerName === '127.0.0.1' || $sHttpHost === 'localhost' || $sHttpHost === '127.0.0.1');
     }
 
+    /**
+     * Escape function, uses the native htmlspecialchars()/strip_tags() PHP functions.
+     *
+     * @param string $sValue
+     * @param boolean $bStrip Default: FALSE
+     * @return array|string The escaped string.
+     */
+    public static function escape(string $sValue, bool $bStrip = false)
+    {
+        return ($bStrip) ? strip_tags($sValue) : htmlspecialchars($sValue, ENT_QUOTES, 'utf-8');
+    }
+
 }
