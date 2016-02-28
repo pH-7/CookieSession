@@ -1,6 +1,6 @@
 <?php
 /**
- * @title            Config Class
+ * @title            Config Interface
  *
  * @author           Pierre-Henry Soria <ph7software@gmail.com>
  * @copyright        (c) 2016, Pierre-Henry Soria. All Rights Reserved.
