@@ -9,7 +9,7 @@
 
 
 ```bash
-$ composer require ucsdmath/session
+$ composer require ph-7/cookiesession
  ```
 
 
