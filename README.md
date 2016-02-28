@@ -38,6 +38,10 @@ echo $oSession->get('lang_pref'); // Will display 'English'
 echo $oSession->get('another_session'); // Will display 'Another value'
 
 echo ($oSession->exists('my_name')) ? $oSession->get('my_name') : 'Well, well, we dont have a name in the session'; // Will display 'Pierre-Henry'
+
+$oSession->remove('my_name'); // Remove 'my_name' session
+
+echo $oSession->get('my_name') // Will display nothing (empty string) as 'my_name' session has been removed
 ```
 
 
@@ -65,6 +69,11 @@ if ($oCookie->exists($aCookies)) {
 
 echo $oCookie->get('name'); // Will display 'Pierre-Henry'
 echo $oCookie->get('mycookie'); // Will display 'Amazing Value!'
+
+$oCookie->remove($aCookies); // Remove all cookies
+
+echo $oCookie->get('name');  // Will display nothing (empty string)
+
 ```
 
 
