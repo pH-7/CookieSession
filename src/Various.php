@@ -17,7 +17,7 @@ class Various
     /**
      * Check if the server is in local.
      *
-     * @return boolean TRUE if it is in local mode, FALSE if not.
+     * @return bool TRUE if it is in local mode, FALSE if not.
      */
     public static function isLocalHost()
     {
@@ -31,8 +31,8 @@ class Various
      * Escape function, uses the native htmlspecialchars()/strip_tags() PHP functions.
      *
      * @param string $sValue
-     * @param boolean $bStrip Default: FALSE
-     * @return array|string The escaped string.
+     * @param bool $bStrip Default: FALSE
+     * @return string The escaped string.
      */
     public static function escape(string $sValue, bool $bStrip = false)
     {
