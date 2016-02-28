@@ -3,7 +3,7 @@
 **CookieSession** is a very light library to manage easily and simply the Session and Cookie with PHP 7+ (and without spending time by configuring and securing them).
 
 
-## Installation
+## Composer Installation
 
  You can add it easily in your projec by using [Composer](https://getcomposer.org/).
 
@@ -11,6 +11,20 @@
 ```bash
 $ composer require ph-7/cookiesession
  ```
+
+Then, include Composer's autoload
+
+```PHP
+require_once 'vendor/autoload.php';
+```
+
+## Manual Installation
+
+If you don't use Composer, you can install it without Composer by including the following
+
+```PHP
+require 'src/autoloader.php';
+```
 
 
 ## Usage for Session
@@ -41,7 +55,7 @@ echo ($oSession->exists('my_name')) ? $oSession->get('my_name') : 'Well, well, w
 
 $oSession->remove('my_name'); // Remove 'my_name' session
 
-echo $oSession->get('my_name') // Will display nothing (empty string) as 'my_name' session has been removed
+echo $oSession->get('my_name'); // Will display nothing (empty string) as 'my_name' session has been removed
 ```
 
 
@@ -64,7 +78,7 @@ $aCookies = [
 $oCookie->set($aCookies);
 
 if ($oCookie->exists($aCookies)) {
-	echo 'All the following cookies exist: ' . implode(', ', $aCookies);
+    echo 'All the following cookies exist: ' . implode(', ', $aCookies);
 }
 
 echo $oCookie->get('name'); // Will display 'Pierre-Henry'
