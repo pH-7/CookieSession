@@ -13,7 +13,7 @@ namespace PH7\CookieSession\Cookie;
 
 use PH7\CookieSession\Various;
 
-class Cookie extends Config
+class Cookie extends Config implements ICookieSession
 {
     /**
      * Set a PHP Cookie.

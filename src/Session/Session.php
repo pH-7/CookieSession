@@ -13,7 +13,7 @@ namespace PH7\CookieSession\Session;
 
 use PH7\CookieSession\Various;
 
-class Session extends Config
+class Session extends Config implements ICookieSession
 {
 
     /**
