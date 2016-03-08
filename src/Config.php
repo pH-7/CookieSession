@@ -80,7 +80,7 @@ abstract class Config implements IConfig
     /**
      * @param string $sPath Domain name (e.g., mysite.com).
      */
-    public function setDomain(string $sDomain) : string
+    public function setDomain(string $sDomain)
     {
         $this->sDomain = $sDomain;
     }
@@ -88,7 +88,7 @@ abstract class Config implements IConfig
     /**
      * @param bool $bIsSsl
      */
-    public function setIsSsl(bool $bIsSsl) : bool
+    public function setIsSsl(bool $bIsSsl)
     {
         $this->bIsSsl = $bIsSsl;
     }
