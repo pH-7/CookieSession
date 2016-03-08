@@ -8,6 +8,7 @@
  * @license          GNU General Public License 3 or later <http://www.gnu.org/licenses/gpl.html>
  * @package          PH7  / CookieSession
  */
+declare(strict_types=1);
 
 namespace PH7\CookieSession;
 
@@ -19,7 +20,7 @@ class Various
      *
      * @return bool TRUE if it is in local mode, FALSE if not.
      */
-    public static function isLocalHost()
+    public static function isLocalHost() : bool
     {
         $sServerName = $_SERVER['SERVER_NAME'];
         $sHttpHost = $_SERVER['HTTP_HOST'];
@@ -34,7 +35,7 @@ class Various
      * @param bool $bStrip Default: FALSE
      * @return string The escaped string.
      */
-    public static function escape(string $sValue, bool $bStrip = false)
+    public static function escape(string $sValue, bool $bStrip = false) : string
     {
         return ($bStrip) ? strip_tags($sValue) : htmlspecialchars($sValue, ENT_QUOTES, 'utf-8');
     }

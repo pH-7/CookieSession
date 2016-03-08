@@ -7,6 +7,7 @@
  * @license          GNU General Public License 3 or later <http://www.gnu.org/licenses/gpl.html>
  * @package          PH7 / CookieSession
  */
+declare(strict_types=1);
 
 namespace PH7\CookieSession;
 
@@ -19,22 +20,22 @@ abstract class Config implements IConfig
     private $bIsSsl;
 
 
-    public function getExpiration()
+    public function getExpiration() : int
     {
         return $this->iExpiration;
     }
 
-    public function getPrefix()
+    public function getPrefix() : string
     {
         return $this->sPrefix;
     }
 
-    public function getPath()
+    public function getPath() : string
     {
         return $this->sPath;
     }
 
-    public function getDomain()
+    public function getDomain() : string
     {
         if (empty($this->sDomain)) {
             $sDomain = (($_SERVER['SERVER_PORT'] != '80') && ($_SERVER['SERVER_PORT'] != '443')) ?  $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] : $_SERVER['SERVER_NAME'];
@@ -43,7 +44,7 @@ abstract class Config implements IConfig
         return $this->sDomain;
     }
 
-    public function getIsSsl()
+    public function getIsSsl() : bool
     {
         if (empty($this->bIsSsl)) {
             $this->bIsSsl = (!empty($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS'] == 'on'));
@@ -79,7 +80,7 @@ abstract class Config implements IConfig
     /**
      * @param string $sPath Domain name (e.g., mysite.com).
      */
-    public function setDomain(string $sDomain)
+    public function setDomain(string $sDomain) : string
     {
         $this->sDomain = $sDomain;
     }
@@ -87,7 +88,7 @@ abstract class Config implements IConfig
     /**
      * @param bool $bIsSsl
      */
-    public function setIsSsl(bool $bIsSsl)
+    public function setIsSsl(bool $bIsSsl) : bool
     {
         $this->bIsSsl = $bIsSsl;
     }

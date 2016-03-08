@@ -8,6 +8,7 @@
  * @license          GNU General Public License 3 or later <http://www.gnu.org/licenses/gpl.html>
  * @package          PH7 / CookieSession / Session
  */
+declare(strict_types=1);
 
 namespace PH7\CookieSession\Session;
 
@@ -20,7 +21,7 @@ class Session extends Config implements \PH7\CookieSession\ICookieSession
      *
      * @param boolean $bDisableSessCache Disable PHP's session cache. Default FALSE
      */
-    public function __construct($bDisableSessCache = false)
+    public function __construct(bool $bDisableSessCache = false)
     {
         if ($bDisableSessCache) {
             session_cache_limiter(false);
@@ -50,7 +51,7 @@ class Session extends Config implements \PH7\CookieSession\ICookieSession
      * @param string $sValue Value of the session, Optional if the session data is in a array.
      * @return void
      */
-    public function set($mName, $sValue = null)
+    public function set($mName, string $sValue = null)
     {
         if (is_array($mName)) {
             foreach ($mName as $sName => $sVal) {
@@ -68,7 +69,7 @@ class Session extends Config implements \PH7\CookieSession\ICookieSession
      * @param boolean $bEscape Default TRUE
      * @return string If the session exists, returns the session with function escape() (htmlspecialchars) if escape is enabled. Empty string value if the session does not exist.
      */
-    public function get($sName, $bEscape = true)
+    public function get(string $sName, bool $bEscape = true) : string
     {
         $sSessionName = $this->getPrefix() . $sName;
         return (!empty($_SESSION[$sSessionName]) ? ($bEscape ? Various::escape($_SESSION[$sSessionName]) : $_SESSION[$sSessionName]) : '');
@@ -80,7 +81,7 @@ class Session extends Config implements \PH7\CookieSession\ICookieSession
      * @param mixed (array | string) $mName Name of the session.
      * @return boolean
      */
-    public function exists($mName)
+    public function exists($mName) : bool
     {
         $bExists = false; // Default value
 

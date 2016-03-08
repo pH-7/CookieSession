@@ -8,6 +8,7 @@
  * @license          GNU General Public License 3 or later <http://www.gnu.org/licenses/gpl.html>
  * @package          PH7  / CookieSession / Cookie
  */
+declare(strict_types=1);
 
 namespace PH7\CookieSession\Cookie;
 
@@ -24,7 +25,7 @@ class Cookie extends Config implements \PH7\CookieSession\ICookieSession
      * @param bool $bSecure If TRUE cookie will only be sent over a secure HTTPS connection from the client.
      * @return void
      */
-    public function set($mName, $sValue = null, $iTime = null, $bSecure = null)
+    public function set($mName, string $sValue = null, int $iTime = null, bool $bSecure = null)
     {
         $iTime = time() + ((int) !empty($iTime) ? $iTime : $this->getExpiration());
         $bSecure = (!empty($bSecure) && is_bool($bSecure)) ? $bSecure : $this->getIsSsl();
@@ -52,7 +53,7 @@ class Cookie extends Config implements \PH7\CookieSession\ICookieSession
      * @param boolean $bEscape Default TRUE
      * @return string If the cookie exists, returns the cookie with function escape() (htmlspecialchars) if escape is enabled. Empty string value if the cookie does not exist.
      */
-    public function get($sName, $bEscape = true)
+    public function get(string $sName, bool $bEscape = true) : string
     {
         $sCookieName = $this->getPrefix() . $sName;
         return (!empty($_COOKIE[$sCookieName]) ? ($bEscape ? Various::escape($_COOKIE[$sCookieName]) : $_COOKIE[$sCookieName]) : '');
@@ -64,7 +65,7 @@ class Cookie extends Config implements \PH7\CookieSession\ICookieSession
      * @param mixed (array | string) $mName Name of the cookie.
      * @return boolean
      */
-    public function exists($mName)
+    public function exists($mName) : bool
     {
         $bExists = false; // Default value
 
