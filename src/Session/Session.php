@@ -72,7 +72,7 @@ class Session extends Config implements \PH7\CookieSession\ICookieSession
     public function get(string $sName, bool $bEscape = true) : string
     {
         $sSessionName = $this->getPrefix() . $sName;
-        return (!empty($_SESSION[$sSessionName]) ? ($bEscape ? Various::escape($_SESSION[$sSessionName]) : $_SESSION[$sSessionName]) : '');
+        return (isset($_SESSION[$sSessionName]) ? ($bEscape ? Various::escape($_SESSION[$sSessionName]) : $_SESSION[$sSessionName]) : '');
     }
 
     /**
@@ -90,7 +90,7 @@ class Session extends Config implements \PH7\CookieSession\ICookieSession
                 if (!$bExists = $this->exists($sName)) break; // Recursive method
             }
         } else {
-            $bExists = (!empty($_SESSION[$this->getPrefix() . $mName])) ? true : false;
+            $bExists = (isset($_SESSION[$this->getPrefix() . $mName])) ? true : false;
         }
 
         return $bExists;

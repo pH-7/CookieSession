@@ -56,7 +56,7 @@ class Cookie extends Config implements \PH7\CookieSession\ICookieSession
     public function get(string $sName, bool $bEscape = true) : string
     {
         $sCookieName = $this->getPrefix() . $sName;
-        return (!empty($_COOKIE[$sCookieName]) ? ($bEscape ? Various::escape($_COOKIE[$sCookieName]) : $_COOKIE[$sCookieName]) : '');
+        return (isset($_COOKIE[$sCookieName]) ? ($bEscape ? Various::escape($_COOKIE[$sCookieName]) : $_COOKIE[$sCookieName]) : '');
     }
 
     /**
@@ -74,7 +74,7 @@ class Cookie extends Config implements \PH7\CookieSession\ICookieSession
                 if (!$bExists = $this->exists($sName)) break; // Recursive method
             }
         } else {
-            $bExists = (!empty($_COOKIE[$this->getPrefix() . $mName])) ? true : false;
+            $bExists = (isset($_COOKIE[$this->getPrefix() . $mName])) ? true : false;
         }
 
         return $bExists;
