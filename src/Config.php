@@ -47,7 +47,7 @@ abstract class Config implements IConfig
     public function getIsSsl() : bool
     {
         if (empty($this->bIsSsl)) {
-            $this->bIsSsl = (!empty($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS'] == 'on'));
+            $this->bIsSsl = (!empty($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) == 'on');
         }
         return $this->bIsSsl;
     }
